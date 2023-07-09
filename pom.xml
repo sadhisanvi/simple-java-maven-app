@@ -14,20 +14,30 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-  </dependencies>
-  <properties>
-		<java.version>11</java.version>
-		<sonar.host.url>http://3.87.232.120:9000</sonar.host.url>
-  		<sonar.login>admin</sonar.login>
- 		<sonar.password>admin123</sonar.password>
-	</properties>
-  <build>
-    <plugins>
-	  <plugin>
+    <dependency>
 <groupId>org.sonarsource.scanner.maven</groupId>
 <artifactId>sonar-maven-plugin</artifactId>
-<version>3.9.0.2155</version>
-</plugin>
+<version>3.2</version>
+</dependency>
+  </dependencies>
+
+<profiles>
+<profile>
+<id>sonar</id>
+<activation>
+<activeByDefault>true</activeByDefault>
+</activation>
+<properties>
+<!-- Optional URL to server. Default value is http://localhost:9000 -->
+<sonar.host.url>
+http://3.87.232.120:9000
+</sonar.host.url>
+</properties>
+</profile>
+</profiles>
+  <build>
+    <plugins>
+	
       <plugin>
         <!-- Build an executable JAR -->
         <groupId>org.apache.maven.plugins</groupId>
